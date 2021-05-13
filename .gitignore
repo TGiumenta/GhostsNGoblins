@@ -14,7 +14,6 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
 
 # Fortran module files
 *.mod
@@ -24,7 +23,6 @@
 *.lai
 *.la
 *.a
-glut32.lib
 
 # Executables
 *.exe
@@ -36,4 +34,13 @@ glut32.lib
 *.opendb
 
 # Folders
-*.vs
+.vs/
+.Debug/
+
+# Extra
+*.tlog
+*.tlog
+*.pdb
+*.ilk
+*.recipe
+

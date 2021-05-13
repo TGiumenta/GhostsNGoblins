@@ -71,13 +71,13 @@ void CollisionManagerC::UpdateCollisions()
 	CheckKey(playerRectangle);
 }
 
-bool8_t CollisionManagerC::CheckRectangleCollision(const CollisionRectangle rectangle1, const CollisionRectangle rectangle2) noexcept
+bool8_t CollisionManagerC::CheckRectangleCollision(const CollisionRectangle& rectangle1, const CollisionRectangle& rectangle2) noexcept
 {
 	return !((rectangle1.xLeft >= rectangle2.xRight) || (rectangle1.xRight <= rectangle2.xLeft)
 		|| (rectangle1.yBottom >= rectangle2.yTop) || (rectangle1.yTop <= rectangle2.yBottom));
 }
 
-void CollisionManagerC::EnemyCollision(const CollisionRectangle playerRectangle)
+void CollisionManagerC::EnemyCollision(const CollisionRectangle& playerRectangle)
 {
 	SpearCollision();
 	PlayerCollision(playerRectangle);
@@ -109,7 +109,7 @@ void CollisionManagerC::SpearCollision()
 }
 
 // The wrapper for all of the collisions to do with the player
-void CollisionManagerC::PlayerCollision(const CollisionRectangle playerRectangle)
+void CollisionManagerC::PlayerCollision(const CollisionRectangle& playerRectangle)
 {
 	// Check if the rectangles overlap for any and all enemies, ensure to pass null for the spear pointer
 	if (CheckZombies(playerRectangle, nullptr, -1)) { return; }
@@ -121,7 +121,7 @@ void CollisionManagerC::PlayerCollision(const CollisionRectangle playerRectangle
 }
 
 // Determines if something collided with any zombies
-bool8_t CollisionManagerC::CheckZombies(const CollisionRectangle rectangle, const SpearC* spear, const int32_t spearIndex)
+bool8_t CollisionManagerC::CheckZombies(const CollisionRectangle& rectangle, const SpearC* spear, const int32_t spearIndex)
 {
 	std::vector<ZombieC*>& zombies = EnemyManagerC::GetInstance()->GetZombies();
 	const int32_t size = zombies.size();
@@ -159,7 +159,7 @@ bool8_t CollisionManagerC::CheckZombies(const CollisionRectangle rectangle, cons
 }
 
 // Determines if something collided with any ghosts
-bool8_t CollisionManagerC::CheckGhosts(const CollisionRectangle rectangle, const SpearC* spear, int32_t const spearIndex)
+bool8_t CollisionManagerC::CheckGhosts(const CollisionRectangle& rectangle, const SpearC* spear, int32_t const spearIndex)
 {
 	std::vector<GhostC*>& ghosts = EnemyManagerC::GetInstance()->GetGhosts();
 	const int32_t size = ghosts.size();
@@ -194,7 +194,7 @@ bool8_t CollisionManagerC::CheckGhosts(const CollisionRectangle rectangle, const
 }
 
 // Determine if something collided with any plants
-bool8_t CollisionManagerC::CheckPlants(const CollisionRectangle rectangle, const SpearC* spear, int32_t const spearIndex)
+bool8_t CollisionManagerC::CheckPlants(const CollisionRectangle& rectangle, const SpearC* spear, int32_t const spearIndex)
 {
 	std::vector<PlantC*>& plants = EnemyManagerC::GetInstance()->GetPlants();
 	const int32_t size = plants.size();
@@ -229,7 +229,7 @@ bool8_t CollisionManagerC::CheckPlants(const CollisionRectangle rectangle, const
 }
 
 // Determine if something collided with any devils
-bool8_t CollisionManagerC::CheckDevils(const CollisionRectangle rectangle, const SpearC* spear, int32_t const spearIndex)
+bool8_t CollisionManagerC::CheckDevils(const CollisionRectangle& rectangle, const SpearC* spear, int32_t const spearIndex)
 {
 	std::vector<DevilC*>& devils = EnemyManagerC::GetInstance()->GetDevils();
 	const int32_t size = devils.size();
@@ -264,7 +264,7 @@ bool8_t CollisionManagerC::CheckDevils(const CollisionRectangle rectangle, const
 }
 
 // Determine if something collided with any birds
-bool8_t CollisionManagerC::CheckBirds(const CollisionRectangle rectangle, const SpearC* spear, int32_t spearIndex)
+bool8_t CollisionManagerC::CheckBirds(const CollisionRectangle& rectangle, const SpearC* spear, int32_t spearIndex)
 {
 	std::vector<BirdC*>& birds = EnemyManagerC::GetInstance()->GetBirds();
 	const int32_t size = birds.size();
@@ -299,7 +299,7 @@ bool8_t CollisionManagerC::CheckBirds(const CollisionRectangle rectangle, const 
 }
 
 // Determine if something collided with any ghasts
-bool8_t CollisionManagerC::CheckGhasts(const CollisionRectangle rectangle, const SpearC* spear, int32_t spearIndex)
+bool8_t CollisionManagerC::CheckGhasts(const CollisionRectangle& rectangle, const SpearC* spear, int32_t spearIndex)
 {
 	std::vector<GhastC*>& ghasts = EnemyManagerC::GetInstance()->GetGhasts();
 	const int32_t size = ghasts.size();
@@ -334,13 +334,13 @@ bool8_t CollisionManagerC::CheckGhasts(const CollisionRectangle rectangle, const
 }
 
 // Wrapper for determining if the player collides with any of the projectiles
-void CollisionManagerC::ProjectileCollision(const CollisionRectangle playerRectangle)
+void CollisionManagerC::ProjectileCollision(const CollisionRectangle& playerRectangle)
 {
 	if (CheckVenoms(playerRectangle)) { return; }
 }
 
 // Determine if the player collided with any projectile
-bool8_t CollisionManagerC::CheckVenoms(const CollisionRectangle playerRectangle)
+bool8_t CollisionManagerC::CheckVenoms(const CollisionRectangle& playerRectangle)
 {
 	std::vector<VenomC*>& venoms = ProjectileManagerC::GetInstance()->GetVenoms();
 	const int32_t size = venoms.size();
@@ -367,14 +367,14 @@ bool8_t CollisionManagerC::CheckVenoms(const CollisionRectangle playerRectangle)
 }
 
 // Wrapper for determining if the player collides with any of the collectibles
-void CollisionManagerC::CollectibleCollision(const CollisionRectangle playerRectangle)
+void CollisionManagerC::CollectibleCollision(const CollisionRectangle& playerRectangle)
 {
 	CheckBags(playerRectangle);
 	CheckStatues(playerRectangle);
 }
 
 // Determine if the player collided with any bags
-void CollisionManagerC::CheckBags(const CollisionRectangle playerRectangle)
+void CollisionManagerC::CheckBags(const CollisionRectangle& playerRectangle)
 {
 	std::vector<MoneybagC*>& bags = CollectibleManagerC::GetInstance()->GetBags();
 	const int32_t size = bags.size();
@@ -398,7 +398,7 @@ void CollisionManagerC::CheckBags(const CollisionRectangle playerRectangle)
 }
 
 // Detrmine if the player collided with any statues
-void CollisionManagerC::CheckStatues(const CollisionRectangle playerRectangle)
+void CollisionManagerC::CheckStatues(const CollisionRectangle& playerRectangle)
 {
 	std::vector<StatueC*>& statues = CollectibleManagerC::GetInstance()->GetStatues();
 	const int32_t size = statues.size();
@@ -422,7 +422,7 @@ void CollisionManagerC::CheckStatues(const CollisionRectangle playerRectangle)
 }
 
 // Determine if the player collided with any keys
-void CollisionManagerC::CheckKey(const CollisionRectangle playerRectangle)
+void CollisionManagerC::CheckKey(const CollisionRectangle& playerRectangle)
 {
 	std::vector<KeyC*>& keys = KeyManagerC::GetInstance()->GetKeys();
 	const int32_t size = keys.size();
