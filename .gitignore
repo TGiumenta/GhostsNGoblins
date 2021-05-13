@@ -24,8 +24,7 @@
 *.lai
 *.la
 *.a
-*.lib
-!glut32.lib
+glut32.lib
 
 # Executables
 *.exe
