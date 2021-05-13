@@ -1,5 +1,4 @@
-#ifndef COLLISION_MANAGER_H		// Header Guard
-#define COLLISION_MANAGER_H
+#pragma once
 
 class SpearC;
 class PlayerC;
@@ -55,5 +54,3 @@ private:
 	
 	static CollisionManagerC* collisionManagerInstance;
 };
-
-#endif

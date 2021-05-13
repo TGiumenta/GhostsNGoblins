@@ -105,7 +105,7 @@ void DevilC::SetPositionsOnFlightPath(const GLfloat playerXPosition, const DWORD
 	// y = Coefficient*(x-position)^2
 	// This sets up parabolic movement + some for a vertex offset on a graph
 	const GLfloat xOffset = xPosition - playerXPosition + 5;
-	yPosition = (82.f / 35721 * xOffset * xOffset);
+	yPosition = (0.05f * 0.05f * xOffset * xOffset);
 	yPosition += ((PlayerC::GetSpriteHeight() / 2.f) + BackgroundManagerC::GetInstance()->GetBottomPlatformPosition());
 }
 
