@@ -146,11 +146,11 @@ private:
 
 	GLfloat	HandleStateChange(DWORD const milliseconds);
 	void IdleStateChange() noexcept;
-	void MoveRightStateChange(DWORD const milliseconds, float_t* deltaX);
-	void MoveLeftStateChange(DWORD const milliseconds, float_t* deltaX);
-	void CrouchStateChange(float_t* deltaX) noexcept;
+	void MoveRightStateChange(DWORD const milliseconds, float_t& deltaX);
+	void MoveLeftStateChange(DWORD const milliseconds, float_t& deltaX);
+	void CrouchStateChange(float_t& deltaX) noexcept;
 	void JumpStateChange();
-	void AttackStateChange(float_t* deltaX) noexcept;
+	void AttackStateChange(float_t& deltaX) noexcept;
 	bool8_t	CanMove() noexcept;
 	void MoveCamera();
 

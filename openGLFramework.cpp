@@ -29,12 +29,11 @@ void TerminateApplication (GL_Window* window) noexcept					// Terminate The Appl
 {
 	PostMessage (window->hWnd, WM_QUIT, 0, 0);							// Send A WM_QUIT Message
 	g_isProgramLooping = FALSE;											// Stop Looping Of The Program
-	return;
 }
 
 void ReshapeGL (int width, int height, int xOffset)						// Reshape The Window When It's Moved Or Resized
 {
-	GLdouble const xOffsetDouble = xOffset;
+	const GLdouble xOffsetDouble = xOffset;
 	glViewport(0, 0, (width), (height));								// Reset The Current Viewport
 	glMatrixMode(GL_PROJECTION);										// Select The Projection Matrix
 	glLoadIdentity ();													// Reset The Projection Matrix
@@ -45,7 +44,6 @@ void ReshapeGL (int width, int height, int xOffset)						// Reshape The Window W
 
 	glMatrixMode (GL_MODELVIEW);										// Select The Modelview Matrix
 	glLoadIdentity ();													// Reset The Modelview Matrix
-	return;
 }
 
 void PreventWindowResize(GL_Window* const window) noexcept

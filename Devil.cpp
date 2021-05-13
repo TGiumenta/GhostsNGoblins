@@ -113,7 +113,7 @@ void DevilC::SetPositionsOnFlightPath(const GLfloat playerXPosition, const DWORD
 void DevilC::SetPositionsOffFlightPath(const DWORD milliseconds, const GLfloat playerXPosition, const bool setVelocityInfo) noexcept
 {
 	// Lock xPosition
-	if (playerXPosition < GetXPosition())
+	if (playerXPosition < xPosition)
 	{
 		if (setVelocityInfo) 
 		{ 

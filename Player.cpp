@@ -125,13 +125,13 @@ GLfloat PlayerC::HandleStateChange(const DWORD milliseconds)
 					IdleStateChange();
 					break;
 				case RIGHT:
-					MoveRightStateChange(milliseconds, &deltaX);
+					MoveRightStateChange(milliseconds, deltaX);
 					break;
 				case LEFT:
-					MoveLeftStateChange(milliseconds, &deltaX);
+					MoveLeftStateChange(milliseconds, deltaX);
 					break;
 				case CROUCH:
-					CrouchStateChange(&deltaX);
+					CrouchStateChange(deltaX);
 					break;
 				case JUMP:
 					JumpStateChange();
@@ -139,7 +139,7 @@ GLfloat PlayerC::HandleStateChange(const DWORD milliseconds)
 				case CLIMB:
 					break;
 				case ATTACK:
-					AttackStateChange(&deltaX);
+					AttackStateChange(deltaX);
 					break;
 				default:
 					break;
@@ -156,15 +156,13 @@ void PlayerC::IdleStateChange() noexcept
 { 
 	if (CanSwapAnimations()) 
 	{ 
-		currentAnimationState =PlayerAnimation::IDLING; 
+		currentAnimationState = PlayerAnimation::IDLING; 
 	}
 }
 
 // Handles all the logic for changing the state to moving right
-void PlayerC::MoveRightStateChange(const DWORD milliseconds, float_t* deltaX)
+void PlayerC::MoveRightStateChange(const DWORD milliseconds, float_t& deltaX)
 {
-	if (deltaX == nullptr) { return;  }
-
 	if (CanSwapAnimations())
 	{
 		// Update the cooldown and check if it is ready to change animations
@@ -179,7 +177,7 @@ void PlayerC::MoveRightStateChange(const DWORD milliseconds, float_t* deltaX)
 	// If the position is within the bounds of the stage, and the player has the ability to move
 	if ((xPosition < (BackgroundManagerC::GetInstance()->GetRightWallPosition() - spriteWidth)) && CanMove())
 	{
-		*deltaX = static_cast<float_t>(milliseconds * movementSpeed);
+		deltaX = static_cast<float_t>(milliseconds * movementSpeed);
 	}
 
 	isFacingRight = true;
@@ -187,10 +185,8 @@ void PlayerC::MoveRightStateChange(const DWORD milliseconds, float_t* deltaX)
 }
 
 // Handles all the logic for changing the state to moving left
-void PlayerC::MoveLeftStateChange(const DWORD milliseconds, float_t* deltaX)
+void PlayerC::MoveLeftStateChange(const DWORD milliseconds, float_t& deltaX)
 {
-	if (deltaX == nullptr) { return; }
-
 	if (CanSwapAnimations())
 	{
 		// Update the cooldown and check if it is ready to change animations
@@ -205,7 +201,7 @@ void PlayerC::MoveLeftStateChange(const DWORD milliseconds, float_t* deltaX)
 	// If the position is within the bounds of the stage, and the player has the ability to move
 	if ((xPosition > BackgroundManagerC::GetInstance()->GetLeftWallPosition()) && CanMove())
 	{
-		*deltaX = static_cast<float_t>(milliseconds * -movementSpeed);
+		deltaX = static_cast<float_t>(milliseconds * -movementSpeed);
 	}
 
 	isFacingRight = false;
@@ -213,10 +209,8 @@ void PlayerC::MoveLeftStateChange(const DWORD milliseconds, float_t* deltaX)
 }
 
 // Handles all the logic for changing the state to crouching
-void PlayerC::CrouchStateChange(float_t* deltaX) noexcept
+void PlayerC::CrouchStateChange(float_t& deltaX) noexcept
 {
-	if (deltaX == nullptr) { return; }
-
 	if (CanSwapAnimations())
 	{
 		currentAnimationState = PlayerAnimation::CROUCHED;
@@ -224,7 +218,7 @@ void PlayerC::CrouchStateChange(float_t* deltaX) noexcept
 	}
 
 	// Zero out the x movement if crouching
-	*deltaX = 0;
+	deltaX = 0;
 }
 
 // Handles all the logic for changing the state to jumping
@@ -234,10 +228,8 @@ void PlayerC::JumpStateChange()
 }
 
 // Handles all the logic for changing the state to attacking
-void PlayerC::AttackStateChange(float_t *deltaX) noexcept
+void PlayerC::AttackStateChange(float_t& deltaX) noexcept
 {
-	if (deltaX == nullptr) { return; }
-
 	if (!isAttacking)
 	{
 		// Update the cooldown and check if it is ready to change animations
@@ -248,7 +240,10 @@ void PlayerC::AttackStateChange(float_t *deltaX) noexcept
 			isAttacking = true;
 
 			// Do not zero out the movement if player is jumping
-			if (!isInAir) { *deltaX = 0; }
+			if (!isInAir) 
+			{ 
+				deltaX = 0; 
+			}
 		}
 	}
 }
@@ -282,7 +277,10 @@ void PlayerC::Render(const DWORD milliseconds)
 	// Potentially render an invincibility frame if the player recently took damage
 	if (GetIsInInvincibleFrame())
 	{
-		if (RenderIFrame(milliseconds)) { return; }
+		if (RenderIFrame(milliseconds)) 
+		{ 
+			return; 
+		}
 	}
 
 	UVRectangle uvRectangle{ 0,1,0,1 };
