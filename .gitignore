@@ -25,6 +25,7 @@
 *.la
 *.a
 *.lib
+!glut32.lib
 
 # Executables
 *.exe
@@ -34,3 +35,6 @@
 *.db
 *.db-shm
 *.opendb
+
+# Folders
+*.vs
