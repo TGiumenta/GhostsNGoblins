@@ -25,7 +25,6 @@
 *.a
 
 # Executables
-*.exe
 *.out
 *.app
 *.ipch
@@ -35,7 +34,7 @@
 
 # Folders
 .vs/
-.Debug/
+.Debug/OpenGLFramework.tlog
 
 # Extra
 *.tlog
@@ -43,4 +42,5 @@
 *.pdb
 *.ilk
 *.recipe
+*.applocal.log
 
