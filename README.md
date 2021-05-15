@@ -15,7 +15,7 @@ This project was completely in approximately 2-3 weeks, entirely by myself with 
 ### Inputs
 W (Arrow Up) - Jump \
 A (Arrow Left) - Move Left \
-D (Arrow Right) - Mvoe Right \
+D (Arrow Right) - Move Right \
 S (Arrow Down) - Crouch
 Space Bar - Fire Weapon \
 Enter - Start/End Game on Menus
