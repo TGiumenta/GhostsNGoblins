@@ -1,7 +1,7 @@
 # GhostsNGoblins
 
 ## Installation
-After downloading the directory, navigate to GhostNGoblins -> Debug -> GhostNGoblins.exe \ 
+After downloading the directory, navigate to GhostNGoblins -> Debug -> GhostNGoblins.exe \
 You can also decide to play directory from the solution. In GhostNGoblins find the OpenGLFramework.sln, Ctrl+F5 will allow you to play!
 
 ## Game Goals
