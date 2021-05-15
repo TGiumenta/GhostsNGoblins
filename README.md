@@ -3,7 +3,7 @@
 ## Installation
 After downloading the directory, navigate to GhostNGoblins -> Debug -> GhostNGoblins.exe \
 You can also decide to play directly from the solution. \
-Download Visual Studio 2019 if you do not have it already from this link: https://visualstudio.microsoft.com/downloads/
+Download Visual Studio 2019 if you do not have it already from this link: https://visualstudio.microsoft.com/downloads/ \
 In GhostNGoblins, find the OpenGLFramework.sln, Ctrl+F5 will allow you to play!
 
 ## Game Goals
@@ -14,10 +14,10 @@ Be careful: The timer is only 2 minutes long, and if you happen to take too long
 ## Game Information
 This project was completely in approximately 2-3 weeks, entirely by myself with the exception of openGLFramework and openGLStuff which was provided by Dr. Tom Carbone.
 
-### Inputs
+## Inputs
 W (Arrow Up) - Jump \
 A (Arrow Left) - Move Left \
 D (Arrow Right) - Move Right \
-S (Arrow Down) - Crouch
+S (Arrow Down) - Crouch \
 Space Bar - Fire Weapon \
 Enter - Start/End Game on Menus
