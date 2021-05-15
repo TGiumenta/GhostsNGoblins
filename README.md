@@ -2,7 +2,9 @@
 
 ## Installation
 After downloading the directory, navigate to GhostNGoblins -> Debug -> GhostNGoblins.exe \
-You can also decide to play directory from the solution. In GhostNGoblins find the OpenGLFramework.sln, Ctrl+F5 will allow you to play!
+You can also decide to play directly from the solution. \
+Download Visual Studio 2019 if you do not have it already from this link: https://visualstudio.microsoft.com/downloads/
+In GhostNGoblins, find the OpenGLFramework.sln, Ctrl+F5 will allow you to play!
 
 ## Game Goals
 Navigate to the end of the level by using your weapon to defeat enemies along the way! \
